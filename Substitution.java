@@ -21,13 +21,15 @@ public class Substitution extends Cipher{
         System.out.println(encoding);
 
         for(int i = 0; i < encoding.length(); i++ ){
+            System.out.print(encoding.charAt(i));
             encodeMap.put((char) (MIN_CHAR + i), encoding.charAt(i));
             decodeMap.put(encoding.charAt(i), (char) (MIN_CHAR + i));
-            System.out.print(encoding.charAt(i));
-            System.out.print(decodeMap.get(encoding.charAt(i)));
+            
+            //System.out.print(decodeMap.get(encoding.charAt(i)));
         }  
-        System.out.println("\n" + encodeMap.size());
-        System.out.println(decodeMap.keySet());
+        //System.out.println("\n" + encodeMap.size());
+        //System.out.println(decodeMap.keySet());
+        //System.out.println(encodeMap.keySet());
     }
 
     @Override

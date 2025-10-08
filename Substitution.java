@@ -18,15 +18,21 @@ public class Substitution extends Cipher{
     public void setEncoding(String encoding){
         //encoding = encoding.toUpperCase();
         checkValid(encoding);
+        System.out.println(encoding);
 
         for(int i = 0; i < encoding.length(); i++ ){
             encodeMap.put((char) (MIN_CHAR + i), encoding.charAt(i));
             decodeMap.put(encoding.charAt(i), (char) (MIN_CHAR + i));
+            System.out.print(encoding.charAt(i));
+            System.out.print(decodeMap.get(encoding.charAt(i)));
         }  
+        System.out.println("\n" + encodeMap.size());
+        System.out.println(decodeMap.keySet());
     }
 
     @Override
     public String encrypt(String input){
+        System.out.println(encodeMap.size());
         if(encodeMap.size() <= 0) throw new IllegalStateException("Encoding was never set");
         if(input == null) throw new IllegalArgumentException("Input given was null");
 

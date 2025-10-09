@@ -1,39 +1,24 @@
 // TODO: Write your implementation to CaesarShift here!
 public class CaesarShift extends Substitution {
-    private int shift;
     
 
     public CaesarShift(int shift){
         super();
-        //this.setEncoding(getEncode());
-        this.shift = shift;
-    }
+        if(shift < 0){
+            throw new IllegalArgumentException("Shift is equal too or lower than 0");
+        }
 
-    public void setEncoding(String encoding){
         String helperString = "";
-        this.shift %= Cipher.TOTAL_CHARS;
-        for(int i = 0; i < encoding.length(); i++){
-        helperString += (char)(Cipher.MIN_CHAR + (encoding.charAt(i) + shift - Cipher.MIN_CHAR) % Cipher.TOTAL_CHARS);  
-        }
-        System.out.println(helperString);
-        super.setEncoding(helperString);
-    }
+        shift %= Cipher.TOTAL_CHARS;
 
-    public static void main(String[] args){
-        CaesarShift caesarShift = new CaesarShift(2);
-        caesarShift.setEncoding(caesarShift.getEncode());
-    }
-
-    public String encrypt(String input){
-        return super.encrypt(input);
-    }
-
-    public String getEncode(){
-        String toReturn = "";
         for(int i = 0; i < TOTAL_CHARS; i++){
-            toReturn += (char) (MIN_CHAR + i);
+            helperString += (char)(Cipher.MIN_CHAR + ((char) (MIN_CHAR + i) + shift - Cipher.MIN_CHAR) % Cipher.TOTAL_CHARS);  
         }
-        return toReturn;
+
+        setEncoding(helperString);
     }
+
+
+
 
 }

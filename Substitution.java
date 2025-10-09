@@ -4,39 +4,34 @@ import java.util.HashMap;
 
 public class Substitution extends Cipher{
 
-    public HashMap<Character, Character> encodeMap = new HashMap<Character, Character>();
-    public HashMap<Character, Character> decodeMap = new HashMap<Character, Character>();
+    public HashMap<Character, Character> encodeMap;
+    public HashMap<Character, Character> decodeMap;
 
     public Substitution(){
-        
+        encodeMap = new HashMap<Character, Character>();
+        decodeMap = new HashMap<Character, Character>();       
     }
 
     public Substitution(String encoding){
+        encodeMap = new HashMap<Character, Character>();
+        decodeMap = new HashMap<Character, Character>();
         setEncoding(encoding);
     }
 
     public void setEncoding(String encoding){
-        //encoding = encoding.toUpperCase();
         checkValid(encoding);
-        System.out.println(encoding);
 
         for(int i = 0; i < encoding.length(); i++ ){
-            System.out.print(encoding.charAt(i));
             encodeMap.put((char) (MIN_CHAR + i), encoding.charAt(i));
             decodeMap.put(encoding.charAt(i), (char) (MIN_CHAR + i));
-            
-            //System.out.print(decodeMap.get(encoding.charAt(i)));
         }  
-        //System.out.println("\n" + encodeMap.size());
-        //System.out.println(decodeMap.keySet());
-        //System.out.println(encodeMap.keySet());
     }
 
     @Override
     public String encrypt(String input){
-        System.out.println(encodeMap.size());
-        if(encodeMap.size() <= 0) throw new IllegalStateException("Encoding was never set");
         if(input == null) throw new IllegalArgumentException("Input given was null");
+        if(encodeMap.size() <= 0) throw new IllegalStateException("Encoding was never set");
+        
 
         String encryptedString = "";
         for(int i = 0; i < input.length(); i++){

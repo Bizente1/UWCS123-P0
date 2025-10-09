@@ -6,11 +6,11 @@ import java.io.*;
 public abstract class Cipher {
     // The minimum character able to be encrypted/decrypted by any cipher
     // (we encourage you to change this value when testing!)
-    public static final int MIN_CHAR = (int)('A');
+    public static final int MIN_CHAR = (int)(' ');
     
     // The maximum character able to be encrypted/decrypted by any cipher
     // (we encourage you to change this value when testing!)
-    public static final int MAX_CHAR = (int)('Z');
+    public static final int MAX_CHAR = (int)('}');
     
     // The total number of characters able to be encrypted/decrypted by any cipher
     // (aka. the total number of characters in the encodable range)

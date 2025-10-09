@@ -1,4 +1,26 @@
+// Bisente Deleon-Oronia
+// 10/8/25
+// CSE 123
+// Programming Assignment 0: Ciphers
+// Trien Vuong
+
+
+// This class implements a Caesar Key cipher
+// It generates an encoding based on a provided key string. The key determines the starting
+// sequence of the encoding, and all remaining valid characters are appended in order to
+// complete the substitution mapping.
+
 public class CaesarKey extends Substitution {
+
+    // Behavior:
+    //   - Constructs a Caesar Key cipher using the given key string.
+    // Parameters:
+    //   - key: the String used as the basis for the substitution mapping.
+    // Exceptions:
+    //   - Throws IllegalArgumentException if:
+    //       * the key is null
+    //       * the key contains invalid characters,
+    //       * the key includes duplicate characters.
     public CaesarKey(String key) {
         super();
         if (key == null) {

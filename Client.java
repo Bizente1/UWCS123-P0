@@ -5,8 +5,8 @@ public class Client {
     // TODO: Change this line once you've implemented a cipher!
     //public static final Cipher CHOSEN_CIPHER = new CaesarKey("FACE");
     public static final Cipher CHOSEN_CIPHER = new MultiCipher(List.of(
-        new CaesarShift(4), new CaesarKey("FACE"),
-        new CaesarShift(1)));
+        new CaesarShift(4), new CaesarKey("123"),
+        new CaesarShift(12), new CaesarKey("lemon")));
 
     // (we also encourage you to change Cipher.MIN_CHAR and Cipher.MAX_CHAR when testing!)
     public static void main(String[] args) throws FileNotFoundException {

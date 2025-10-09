@@ -71,12 +71,15 @@ public class Testing {
         // be ignored (aborted). This doesn't mean that the code is wrong! It just means that
         // the test won't produce any meaningful information if the assumption is not met.
         assumeTrue(Cipher.MIN_CHAR == (int)('A') && Cipher.MAX_CHAR == (int)('Z'));
-
+        
+        
         // TODO: Create a new CaesarKey("TIN"), encrypt the message "HELLO" and check the
         //       result's accurate. Then, take the encrypted message, decrypt it, and
         //       check the result's accurate
-        assertEquals(true, false, "Assertion 1 not yet implemented!");
-        assertEquals(true, false, "Assertion 2 not yet implemented!");
+        CaesarKey testKey = new CaesarKey("TIN");
+        assertEquals("EBJJM", testKey.encrypt("HELLO"));
+        assertEquals("HELLO", testKey.decrypt("EBJJM"));
+    
     }
 
     @Test
@@ -90,8 +93,9 @@ public class Testing {
         // TODO: Create a new CaesarShift(6), encrypt the message "HELLO" and check the
         //       result's accurate. Then, take the encrypted message, decrypt it, and
         //       check the result's accurate
-        assertEquals(true, false, "Assertion 1 not yet implemented!");
-        assertEquals(true, false, "Assertion 2 not yet implemented!");
+        CaesarShift shiftTest = new CaesarShift(6);
+        assertEquals("NKRRU", shiftTest.encrypt("HELLO"));
+        assertEquals("HELLO", shiftTest.decrypt("NKRRU"));
     }
 
     @Test
@@ -105,7 +109,11 @@ public class Testing {
         // TODO: Create a new MultiCipher with ciphers CaesarKey("TIN") and CaesarShift(6)),
         //       encrypt the message "HELLO", and check the result's accurate. Then, take
         //       the encrypted message, decrypt it, and check the result's accurate
-        assertEquals(true, false, "Assertion 1 not yet implemented!");
-        assertEquals(true, false, "Assertion 2 not yet implemented!");
+        MultiCipher testMultiCipher = new MultiCipher(Arrays.asList(
+            new CaesarKey("TIN"), new CaesarShift(6),
+            new CaesarShift(6), new CaesarKey("TIN")));
+            
+        assertEquals("PLVVY", testMultiCipher.encrypt("HELLO"));
+        assertEquals("HELLO", testMultiCipher.decrypt("PLVVY"));
     }
 }

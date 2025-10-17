@@ -44,8 +44,7 @@ public class CaesarKey extends Substitution {
 
         String helperString = key;
         for (int i = 0; i < TOTAL_CHARS; i++) {
-            char[] toCheck = { (char) (MIN_CHAR + i) };
-            if (!key.contains(new String(toCheck))) {
+            if (!key.contains(String.valueOf((char) (MIN_CHAR + i)))) {
                 helperString += (char) (MIN_CHAR + i);
             }
         }

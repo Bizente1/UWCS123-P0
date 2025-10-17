@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 
 // Bisente Deleon-Oronia
 // 10/8/25
@@ -12,8 +13,8 @@ import java.util.HashMap;
 //messages by giving a Encoding String that maps charactors to the String provided
 public class Substitution extends Cipher {
 
-    public HashMap<Character, Character> encodeMap;
-    public HashMap<Character, Character> decodeMap;
+    private Map<Character, Character> encodeMap;
+    private Map<Character, Character> decodeMap;
 
     // Behavior:
     //   - Constructs an empty Substitution Cipher with no encoding set.
@@ -29,6 +30,8 @@ public class Substitution extends Cipher {
     // Exceptions:
     //   - Throws IllegalArgumentException if the encoding string is invalid.
     public Substitution(String encoding) {
+        checkValid(encoding);
+
         encodeMap = new HashMap<Character, Character>();
         decodeMap = new HashMap<Character, Character>();
         setEncoding(encoding);

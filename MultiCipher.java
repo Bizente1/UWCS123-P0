@@ -10,7 +10,7 @@ import java.util.List;
 // This class implements a MultiCipher, which applies multiple Cipher objects in sequence.
 public class MultiCipher extends Cipher {
 
-    public List<Cipher> ciphers;
+    private List<Cipher> ciphers;
 
 
     // Behavior:

@@ -4,21 +4,22 @@
 // Programming Assignment 0: Ciphers
 // Trien Vuong
 
-
-
-// This class implements a Caesar Shift cipher
+// This class is a Caesar Shift cipher
 // It shifts each character in the encoding by a given number of positions within the valid range
 // of characters, wrapping around when necessary.
 public class CaesarShift extends Substitution {
 
     // Behavior:
-    //   - Constructs a CaesarShift cipher using the given shift value.
-    //   - Generates a substitution encoding that shifts each valid character by the given amount.
-    // Parameters:
-    //   - shift: the integer number of positions to shift characters by in the cipher.
+    // - Constructs a CaesarShift cipher using the given shift value.
+    // - Maps all the characters in the range to valued of the encodeable range
+    //   shifts over by the given shift integer
     // Exceptions:
-    //   - Throws IllegalArgumentException if the given shift value is less than or equal to 0.
-    
+    // - Throws IllegalArgumentException if the given shift value is less than 0.
+    // Returns:
+    //     - N/A is a Constructor
+    // Parameters:
+    // - shift: the integer number of positions to shift characters by in the
+    //   cipher.
     public CaesarShift(int shift) {
         super();
         if (shift < 0) {

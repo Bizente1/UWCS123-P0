@@ -6,11 +6,10 @@ import java.util.Map;
 // CSE 123
 // Programming Assignment 0: Ciphers
 // Trien Vuong
-//
 
-
-// This class implements a Substitution Cipher. It allows users to encrypt and decrypt
-//messages by giving a Encoding String that maps charactors to the String provided
+// This class is a Substitution Cipher and inherits from the Cipher Abstract Class. 
+// It allows users to encrypt and decrypt messages by giving a Encoding String that maps 
+// charactors to the Encoding String provided
 public class Substitution extends Cipher {
 
     private Map<Character, Character> encodeMap;
@@ -18,31 +17,50 @@ public class Substitution extends Cipher {
 
     // Behavior:
     //   - Constructs an empty Substitution Cipher with no encoding set.
+    // Exceptions:
+    //  - None
+    // Returns:
+    //     - N/A is a Constructor
+    // Parameters:
+    //   - Nothing (No encoding set)
     public Substitution() {
         encodeMap = new HashMap<Character, Character>();
         decodeMap = new HashMap<Character, Character>();
     }
 
     // Behavior:
-    //   - Constructs a Substitution Cipher and sets its encoding using the provided string.
-    // Parameters:
-    //   - encoding: a String representing the substitution mapping for characters.
+    //   - Constructs a Substitution Cipher and sets its encoding using the provided string
+    //      that can be used to encrypted and decrypted a string by using the encoding.
     // Exceptions:
-    //   - Throws IllegalArgumentException if the encoding string is invalid.
+    // - Throws IllegalArgumentException if:
+    //     * encoding is null,
+    //     * encoding is empty,
+    //     * encoding length is greater than or less than TOTAL_CHARS,
+    //     * encoding contains duplicate characters,
+    //     * encoding contains characters outside the allowed range.
+    // Returns:
+    //     - N/A is a Constructor
+    // Parameters:
+    //   - encoding: a String representing the substitution mapping for characters.v
     public Substitution(String encoding) {
-        checkValid(encoding);
-
-        encodeMap = new HashMap<Character, Character>();
-        decodeMap = new HashMap<Character, Character>();
+        this();
         setEncoding(encoding);
     }
 
     // Behavior:
-    //   - Sets up the character mapping (both encoding and decoding) based on the given encoding string.
+    //  - Sets the Encoding of the Cipher by mapping the charactor range to the encoding String.
+    //  - Can be used to reassign a coding of a already made Cipher.
+    // Exceptions:
+    // - Throws IllegalArgumentException if:
+    //     * encoding is null,
+    //     * encoding is empty,
+    //     * encoding length is greater than or less than TOTAL_CHARS,
+    //     * encoding contains duplicate characters,
+    //     * encoding contains characters outside the allowed range.
+    // Return:
+    // - Nothing
     // Parameters:
     //   - encoding: the String containing the character substitutions.
-    // Exceptions:
-    //   - Throws IllegalArgumentException if the encoding string is invalid or out of range.
     public void setEncoding(String encoding) {
         checkValid(encoding);
 
@@ -54,13 +72,15 @@ public class Substitution extends Cipher {
 
     // Behavior:
     //   - Encrypts the given input String using the substitution encoding.
-    // Parameters:
-    //   - input: the String to be encrypted.
-    // Returns:
-    //   - A new String where each character has been replaced with its encoded counterpart.
     // Exceptions:
     //   - Throws IllegalArgumentException if input is null.
     //   - Throws IllegalStateException if the encoding map has not been set.
+    // Returns:
+    //   - A new String where each character has been replaced with its encoded counterpart.
+    //   - If a character that was given lies outside the encodable range then its 
+    //      will not be changed in the String be returned
+    // Parameters:
+    //   - input: the String to be encrypted.
     @Override
     public String encrypt(String input) {
         if (input == null)
@@ -82,13 +102,15 @@ public class Substitution extends Cipher {
 
     // Behavior:
     //   - Decrypts the given input String using the substitution decoding.
-    // Parameters:
-    //   - input: the encrypted String to be decrypted.
-    // Returns:
-    //   - A new String where each encoded character has been replaced with its original counterpart.
     // Exceptions:
     //   - Throws IllegalStateException if decoding map has not been set.
     //   - Throws IllegalArgumentException if input is null.
+    // Returns:
+    //   - A new String where each encoded character has been replaced with its original counterpart.
+    //   - If a character lies outside the encodeable range then the charater in 
+    //      the String will remain unchanged
+    // Parameters:
+    //   - input: the encrypted String to be decrypted.
     @Override
     public String decrypt(String input) {
         if (decodeMap.size() <= 0)
@@ -108,18 +130,21 @@ public class Substitution extends Cipher {
         return decryptedString;
     }
 
+
     // Behavior:
-    //   - Checks if a given encoding string is valid by verifying its length,
-    //     character range, and that all characters are unique.
-    // Parameters:
-    //   - encoding: the String to validate as a substitution mapping.
+    //     - Checks if a given encoding string is valid by verifying its not null, its length,
+    //     is not empty, character range, and that all characters are unique.
     // Exceptions:
-    //   - Throws IllegalArgumentException if:
-    //       * encoding is null,
-    //       * encoding is empty,
-    //       * encoding length is greater than or less than TOTAL_CHARS,
-    //       * encoding contains duplicate characters,
-    //       * encoding contains characters outside the allowed range.
+    //     - Throws IllegalArgumentException if:
+    //         * encoding is null,
+    //         * encoding is empty,
+    //         * encoding length is greater than or less than TOTAL_CHARS,
+    //         * encoding contains duplicate characters,
+    //         * encoding contains characters outside the allowed range.
+    // Return:
+    //     - Nothing
+    // Parameters:
+    //     - encoding: the String to validate as a substitution mapping.
     //
     // This is a method the User doesn't have access to but it just help make another 
     // method more concise so it just a helper method.

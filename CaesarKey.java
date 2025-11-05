@@ -5,7 +5,7 @@
 // Trien Vuong
 
 
-// This class implements a Caesar Key cipher
+// This class is a Caesar Key cipher and inherits from the Substitution Subclass and the Cipher Abstract Parent Class 
 // It generates an encoding based on a provided key string. The key determines the starting
 // sequence of the encoding, and all remaining valid characters are appended in order to
 // complete the substitution mapping.
@@ -13,14 +13,19 @@
 public class CaesarKey extends Substitution {
 
     // Behavior:
-    //   - Constructs a Caesar Key cipher using the given key string.
-    // Parameters:
-    //   - key: the String used as the basis for the substitution mapping.
+    //   - Constructs a Caesar Key cipher.
+    //   - Sets the begining of the encoding string to given key
+    //     and maps the rest of the characters in the remaing encoding range
+    //     to the rest of the character range
     // Exceptions:
     //   - Throws IllegalArgumentException if:
     //       * the key is null
     //       * the key contains invalid characters,
     //       * the key includes duplicate characters.
+    // Returns:
+    //     - N/A is a Constructor
+    // Parameters:
+    //   - key: the String used as the basis for the substitution mapping.
     public CaesarKey(String key) {
         super();
         if (key == null) {
